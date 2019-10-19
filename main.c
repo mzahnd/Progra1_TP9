@@ -19,10 +19,10 @@
  * ============================================================================
  * File:    main.c
  * 
- * Author:  Martín E. Zahnd <mzahnd at itba.edu.ar>
- *          Joaquín Artola  <joartola at itba.edu.ar>
- *          Camila Jazmin Terrazas Socaño <cterrazas at itba.edu.ar>
- *          Francisco Carricart <fcarricart at itba.edu.ar>
+ * Author:  Martín E. Zahnd                         <mzahnd at itba.edu.ar>
+ *          Joaquín Artola                          <joartola at itba.edu.ar>
+ *          Camila Jazmin Terrazas Socaño           <cterrazas at itba.edu.ar>
+ *          Francisco Carricart                     <fcarricart at itba.edu.ar>
  *
  * Team:    Grupo 5
  * 
@@ -38,14 +38,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Verify if a given string is a palindrome or not
 #include "checkPalindromo.h"
+
+// Print chkpal answer
 #include "printAns.h"
 
 // ====== Funciones ======
 
-/*
- *
- */
 int
 main(int argc, char** argv)
 {
@@ -62,13 +62,13 @@ main(int argc, char** argv)
         int i;
         for(i = 1; i < argc; i++)
         {
-
+            // Verify if a given string is a palindrome or not
             answer = chkpal(argc, argv, i);
 
 #ifdef DEBUG
             printf("i: %d ; answer: %d\n", i, answer);
-
 #else
+            // Print chkpal answer
             printAns(argv[i], answer);
 #endif
 

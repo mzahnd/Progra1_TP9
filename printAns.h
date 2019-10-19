@@ -15,16 +15,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* 
- * File:   printAns.h
- * Author: Martín E. Zahnd <mzahnd at itba.edu.ar>
+/*
+ * ============================================================================
+ * File:    printAns.h
+ * 
+ * Author:  Martín E. Zahnd                         <mzahnd at itba.edu.ar>
+ *          Joaquín Artola                          <joartola at itba.edu.ar>
+ *          Camila Jazmin Terrazas Socaño           <cterrazas at itba.edu.ar>
+ *          Francisco Carricart                     <fcarricart at itba.edu.ar>
  *
- * Created on October 19, 2019, 1:46 PM
+ * Team:    Grupo 5
+ * 
+ * Created: October 19, 2019, 9:47 AM
+ * 
+ * General code description:
+ *          Imprime en pantalla si el string es o no un palíndromo.
+ * ============================================================================
  */
 
 #ifndef PRINTANS_H
 #    define PRINTANS_H
 
+// Print chkpal answer
+
+/*
+ * Input: 
+ *      *string: Checked string
+ *      answer: Answer given by chkpal
+ * 
+ * Output: 
+ *      stdout
+ */
 void
 printAns(char *string, int answer);
 

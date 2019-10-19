@@ -17,19 +17,19 @@
 
 /*
  * ============================================================================
- * File:    checkPalindromo.c
+ * File:    printAns.c
  * 
- * Author:  Martín E. Zahnd <mzahnd at itba.edu.ar>
- *          Joaquín Artola  <joartola at itba.edu.ar>
- *          Camila Jazmin Terrazas Socaño <cterrazas at itba.edu.ar>
- *          Francisco Carricart <fcarricart at itba.edu.ar>
+ * Author:  Martín E. Zahnd                         <mzahnd at itba.edu.ar>
+ *          Joaquín Artola                          <joartola at itba.edu.ar>
+ *          Camila Jazmin Terrazas Socaño           <cterrazas at itba.edu.ar>
+ *          Francisco Carricart                     <fcarricart at itba.edu.ar>
  *
  * Team:    Grupo 5
  * 
- * Created: October 18, 2019, 9:20 PM
+ * Created: October 19, 2019, 9:45 AM
  * 
  * General code description:
- *          Verifica si un dado string es un palíndromo.
+ *          Imprime en pantalla si el string es o no un palíndromo.
  * ============================================================================
  */
 
@@ -37,26 +37,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Verify if a given string is a palindrome or not
+#include "checkPalindromo.h"
+
+// This file
 #include "printAns.h"
-
-// ====== Constantes y Macros ======
-
-// ====== Prototipos ======
 
 // ====== Funciones ======
 
+// Print chkpal answer
+
+/*
+ * Input: 
+ *      *string: Checked string
+ *      answer: Answer given by chkpal
+ * 
+ * Output: 
+ *      stdout
+ */
 void
 printAns(char *string, int answer)
 {
     switch(answer)
     {
-        case -1:
+        case ERROR:
             printf("\"%s\" contiene un caracter invalido.\n", string);
             break;
-        case 0:
+        case NOTPAL:
             printf("\"%s\" no es un palíndromo.\n", string);
             break;
-        case 1:
+        case YESPAL:
             printf("\"%s\" es un palíndromo.\n", string);
             break;
         default:
