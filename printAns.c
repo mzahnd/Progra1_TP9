@@ -17,7 +17,7 @@
 
 /*
  * ============================================================================
- * File:    main.c
+ * File:    checkPalindromo.c
  * 
  * Author:  Martín E. Zahnd <mzahnd at itba.edu.ar>
  *          Joaquín Artola  <joartola at itba.edu.ar>
@@ -26,11 +26,10 @@
  *
  * Team:    Grupo 5
  * 
- * Created: October 17, 2019, 8:20 PM
+ * Created: October 18, 2019, 9:20 PM
  * 
  * General code description:
- *          Dado uno o varios strings ingresados como argumentos al ejecutar el
- *      programa, se verifica si cada uno de ellos es un palíndromo.
+ *          Verifica si un dado string es un palíndromo.
  * ============================================================================
  */
 
@@ -38,44 +37,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "checkPalindromo.h"
 #include "printAns.h"
+
+// ====== Constantes y Macros ======
+
+// ====== Prototipos ======
 
 // ====== Funciones ======
 
-/*
- *
- */
-int
-main(int argc, char** argv)
+void
+printAns(char *string, int answer)
 {
-    int answer = -1;
-
-    if(argc <= 1)
+    switch(answer)
     {
-        printf("Debe introducir un texto como argumento al ejecutar el "
-               "programa.\n");
+        case -1:
+            printf("\"%s\" contiene un caracter invalido.\n", string);
+            break;
+        case 0:
+            printf("\"%s\" no es un palíndromo.\n", string);
+            break;
+        case 1:
+            printf("\"%s\" es un palíndromo.\n", string);
+            break;
+        default:
+            printf("Si llegaste hasta acá, rompiste todo.");
+            break;
     }
-
-    else
-    {
-        int i;
-        for(i = 1; i < argc; i++)
-        {
-
-            answer = chkpal(argc, argv, i);
-
-#ifdef DEBUG
-            printf("i: %d ; answer: %d\n", i, answer);
-
-#else
-            printAns(argv[i], answer);
-#endif
-
-        }
-
-    }
-
-    return (EXIT_SUCCESS);
 }
-

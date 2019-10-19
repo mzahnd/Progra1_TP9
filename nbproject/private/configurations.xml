@@ -49,12 +49,18 @@
       </nativedebugger>
       <runprofile version="9">
         <runcommandpicklist>
-          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" "hola" "anana"</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" "hola"</runcommandpicklistitem>
-          <runcommandpicklistitem>"${OUTPUT_PATH}" "anana"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "A man. a plan; a canal, Panama"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "ITBAabti" "CBC" "Anana" "Anita lava la tina"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "abc" "."</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "abc" "cbc"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "ab-ba"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "-"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "ab ba"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "ab bc"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "A man. a plan; a canal,: Panama"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" "ab bc" "ab ba" "-" "." "abc" "ITBAabti" "CBC" "Anana" "A man. a plan; a canal,: Panama" "A man, a plan, a canal, Panama" "." "ab-ba"</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" "anana"</runcommand>
+        <runcommand>"${OUTPUT_PATH}" "ab bc" "ab ba" "-" "." "abc" "ITBAabti" "CBC" "Anana" "A man. a plan; a canal,: Panama" "A man, a plan, a canal, Panama" "." "ab-ba"</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

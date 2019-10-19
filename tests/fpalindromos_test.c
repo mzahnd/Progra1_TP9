@@ -40,7 +40,7 @@
 #include "checkPalindromo.h"
 
 // ====== Constantes y Macros ======
-
+#define MAXSIZE 255
 // ====== Globales ======
 int test_total, test_pass, test_fail;
 
@@ -81,12 +81,15 @@ test1(void)
     printf("Test 1 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "hola"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "hola"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(0, &ans, "Test 1");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -95,12 +98,15 @@ test2(void)
     printf("Test 2 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "abcba"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "abcba"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(1, &ans, "Test 2");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -109,12 +115,15 @@ test3(void)
     printf("Test 3 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "ab-ba"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "ab-ba"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(-1, &ans, "Test 3");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -123,12 +132,15 @@ test4(void)
     printf("Test 4 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "-"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "-"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(-1, &ans, "Test 4");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -137,7 +149,7 @@ test5(void)
     printf("Test 5 (chkpal)\n");
 
     int ans = -2, fargc = 3;
-    char *fargv[] = {"./ejecutable", "abc", "cbc"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "abc", "cbc"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
@@ -147,6 +159,9 @@ test5(void)
     ans = chkpal(fargc, fargv, 2);
 
     check_ans(1, &ans, "Test 5_2");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -155,7 +170,7 @@ test6(void)
     printf("Test 6 (chkpal)\n");
 
     int ans = -2, fargc = 3;
-    char *fargv[] = {"./ejecutable", "abc", "."};
+    char *fargv[MAXSIZE] = {"./ejecutable", "abc", "."};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
@@ -166,6 +181,9 @@ test6(void)
     ans = chkpal(fargc, fargv, 2);
 
     check_ans(-1, &ans, "Test 6_2");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -174,7 +192,7 @@ test7(void)
     printf("Test 7 (chkpal)\n");
 
     int ans = -2, fargc = 3;
-    char *fargv[] = {"./ejecutable", "ITBAabti", "CBC"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "ITBAabti", "CBC"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
@@ -185,6 +203,9 @@ test7(void)
     ans = chkpal(fargc, fargv, 2);
 
     check_ans(1, &ans, "Test 7_2");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -193,8 +214,8 @@ test8(void)
     printf("Test 8 (chkpal)\n");
 
     int ans = -2, fargc = 5;
-    char *fargv[] = {"./ejecutable", "ITBAabti", "CBC", "Anana",
-                     "Anita lava la tina"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "ITBAabti", "CBC", "Anana",
+                            "Anita lava la tina"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
@@ -215,6 +236,9 @@ test8(void)
     ans = chkpal(fargc, fargv, 4);
 
     check_ans(1, &ans, "Test 8_4");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -223,12 +247,15 @@ test9(void)
     printf("Test 9 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "A man, a plan, a canal, Panama"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "A man, a plan, a canal, Panama"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(1, &ans, "Test 9");
+
+    // Free used memory
+    free(fargv);
 }
 
 void
@@ -237,13 +264,16 @@ test10(void)
     printf("Test 10 (chkpal)\n");
 
     int ans = -2, fargc = 2;
-    char *fargv[] = {"./ejecutable", "A man. a plan; a canal, Panama"};
+    char *fargv[MAXSIZE] = {"./ejecutable", "A man. a plan; a canal, Panama"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
 
     ans = chkpal(fargc, fargv, 1);
 
     check_ans(1, &ans, "Test 10");
+
+    // Free used memory
+    free(fargv);
 }
 
 void

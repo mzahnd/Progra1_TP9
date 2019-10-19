@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>checkPalindromo.h</itemPath>
+      <itemPath>printAns.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -15,6 +16,7 @@
                    projectFiles="true">
       <itemPath>checkPalindromo.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>printAns.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -45,7 +47,6 @@
       <compileType>
         <cTool>
           <standard>10</standard>
-          <commandLine>-D DEBUG</commandLine>
           <warningLevel>2</warningLevel>
         </cTool>
       </compileType>
@@ -69,6 +70,10 @@
         </linkerTool>
       </folder>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="printAns.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="printAns.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/fpalindromos_test.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -116,6 +121,10 @@
         </linkerTool>
       </folder>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="printAns.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="printAns.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/fpalindromos_test.c" ex="false" tool="0" flavor2="0">
       </item>

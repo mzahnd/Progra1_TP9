@@ -40,7 +40,8 @@
 #include "checkPalindromo.h"
 
 // ====== Constantes y Macros ======
-#define TOUPPER(c) (((c)>='a' && (c)<='z')?((c)+'A'-'a'):(c))
+#define TOUPPER(c) (((c)>='a' && (c)<='z') ? ((c)+'A'-'a') : (c))
+#define VERIFLETTER(c) ( ((TOUPPER(c)) >= 'A' && (TOUPPER(c)) <= 'Z') ? 1 : 0 )
 
 // ====== Prototipos ======
 
@@ -51,6 +52,12 @@ getstr_size(char **string, char **strend, int position);
 // Compare characters in string
 static int
 compare_chars(char *strstart, char *strend);
+
+// Ommit special characters
+
+static int
+chr2ommit(char **start, char **end);
+
 // ====== Funciones ======
 
 int
@@ -58,7 +65,6 @@ chkpal(int cant, char **string, int position)
 {
     int ans = -1;
     char *strend;
-
 
     if(position < cant - 1)
     {
@@ -95,24 +101,181 @@ getstr_size(char **string, char **strend, int position)
 static int
 compare_chars(char *strstart, char *strend)
 {
-    int ans = -1;
+    int ans = -2;
 
-    if(strstart >= strend)
-
+    if(strstart > strend)
     {
         ans = 1;
     }
 
-    else if(TOUPPER(*(strstart + 1)) == TOUPPER(*(strend - 1)))
+    else if(strstart == strend)
     {
-        ans = compare_chars(strstart + 1, strend - 1);
+        if(VERIFLETTER(*strstart))
+        {
+            ans = 1;
+        }
+
+        else if(*(strend + 1) != '\0')
+        {
+            ans = chr2ommit(&strstart, &strend);
+        }
+
+        else
+        {
+            ans = -1;
+        }
     }
 
     else
     {
-        ans = 0;
+        while(ans != -1 &&
+              (VERIFLETTER(*strstart) == 0 || VERIFLETTER(*strend) == 0))
+        {
+            ans = chr2ommit(&strstart, &strend);
+        }
+
+        if(ans != -1 &&
+           (TOUPPER(*strstart) == TOUPPER(*strend)))
+        {
+            ans = compare_chars(strstart + 1, strend - 1);
+        }
+
+        else if(ans != -1)
+        {
+            ans = 0;
+        }
     }
 
+    /*while((VERIFLETTER(*strstart) == 0 ||
+           VERIFLETTER(*strend) == 0)
+          && ans == -2)
+    {
+        ans = chr2ommit(&strstart, &strend);
+    }
+
+    if(ans != -1 && strstart == strend)
+    {
+        if(callnumber == 0 && VERIFLETTER(*strstart))
+        {
+            ans = 1;
+        }
+
+        else if(callnumber == 0)
+        {
+            ans = -1;
+        }
+
+        else if(VERIFLETTER(*strstart))
+        {
+            ans = 1;
+        }
+
+        else
+        {
+            ans = -1;
+        }
+    }
+
+    else if(ans != -1 && strstart > strend)
+    {
+
+        if(callnumber == 0)
+        {
+            ans = -1;
+        }
+
+        else
+        {
+            ans = 1;
+        }
+    }
+
+    else if(ans != -1)
+    {
+        if(TOUPPER(*(strstart)) == TOUPPER(*(strend)))
+        {
+            callnumber++;
+
+            ans = compare_chars(strstart + 1, strend - 1);
+        }
+
+        else
+        {
+            ans = 0;
+        }
+
+        if(strstart <= strend &&
+   TOUPPER(*(strstart)) == TOUPPER(*(strend)))
+{
+    callnumber++;
+
+    ans = compare_chars(strstart + 1, strend - 1);
+}
+
+else if(strstart <= strend)
+{
+    ans = -1;
+}
+
+else if(strstart > strend)
+{
+    ans = 0;
+}
+    }*/
+
+    return ans;
+}
+
+// Ommit special characters
+
+static int
+chr2ommit(char **start, char **end)
+{
+    int i, ans = -1;
+    char ***strchar = NULL;
+
+    for(i = 0; i < 2; i++)
+    {
+        if(i == 0)
+        {
+            strchar = &start;
+        }
+        else
+        {
+            strchar = &end;
+        }
+
+        switch(***strchar)
+        {
+            case ' ':
+            case ',':
+            case ';':
+            case ':':
+            case '.':
+            case '?':
+            case '!':
+            case '\x27':
+            case '\x22':
+                if(i == 0)
+                {
+                    **strchar = **strchar + 1;
+                }
+
+                else
+                {
+                    **strchar = **strchar - 1;
+                }
+
+                ans = 1;
+
+                break;
+
+            default:
+                ans != 1 ? ans = -1 : ans;
+
+                break;
+        }
+    }
 
     return ans;
 }
