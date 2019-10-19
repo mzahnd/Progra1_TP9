@@ -29,13 +29,15 @@
  * Created: October 17, 2019, 9:58 PM
  * 
  * General code description:
- *          Tests del módulo --Function Name--
+ *          Tests del módulo chkpal
  * ============================================================================
  */
 
 // ====== Librerías ======
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "checkPalindromo.h"
 
 // ====== Constantes y Macros ======
 
@@ -76,13 +78,13 @@ test10(void);
 void
 test1(void)
 {
-    printf("Test 1 (--Function Name--)\n");
+    printf("Test 1 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "hola"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
     check_ans(0, &ans, "Test 1");
 }
@@ -90,128 +92,158 @@ test1(void)
 void
 test2(void)
 {
-    printf("Test 2 (--Function Name--)\n");
+    printf("Test 2 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "abcba"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 2");
+    check_ans(1, &ans, "Test 2");
 }
 
 void
 test3(void)
 {
-    printf("Test 3 (--Function Name--)\n");
+    printf("Test 3 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "ab-ba"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 3");
+    check_ans(-1, &ans, "Test 3");
 }
 
 void
 test4(void)
 {
-    printf("Test 4 (--Function Name--)\n");
+    printf("Test 4 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "-"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 4");
+    check_ans(-1, &ans, "Test 4");
 }
 
 void
 test5(void)
 {
-    printf("Test 5 (--Function Name--)\n");
+    printf("Test 5 (chkpal)\n");
 
     int ans = -2, fargc = 3;
     char *fargv[] = {"./ejecutable", "abc", "cbc"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 5");
+    check_ans(0, &ans, "Test 5_1");
+
+    ans = chkpal(fargc, fargv, 2);
+
+    check_ans(1, &ans, "Test 5_2");
 }
 
 void
 test6(void)
 {
-    printf("Test 6 (--Function Name--)\n");
+    printf("Test 6 (chkpal)\n");
 
     int ans = -2, fargc = 3;
     char *fargv[] = {"./ejecutable", "abc", "."};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 6");
+    check_ans(0, &ans, "Test 6_1");
+
+    // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
+    ans = chkpal(fargc, fargv, 2);
+
+    check_ans(-1, &ans, "Test 6_2");
 }
 
 void
 test7(void)
 {
-    printf("Test 7 (--Function Name--)\n");
+    printf("Test 7 (chkpal)\n");
 
     int ans = -2, fargc = 3;
     char *fargv[] = {"./ejecutable", "ITBAabti", "CBC"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 7");
+    check_ans(1, &ans, "Test 7_1");
+
+    // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
+    ans = chkpal(fargc, fargv, 2);
+
+    check_ans(1, &ans, "Test 7_2");
 }
 
 void
 test8(void)
 {
-    printf("Test 8 (--Function Name--)\n");
+    printf("Test 8 (chkpal)\n");
 
     int ans = -2, fargc = 5;
     char *fargv[] = {"./ejecutable", "ITBAabti", "CBC", "Anana",
                      "Anita lava la tina"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 8");
+    check_ans(1, &ans, "Test 8_1");
+
+    // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
+    ans = chkpal(fargc, fargv, 2);
+
+    check_ans(1, &ans, "Test 8_2");
+
+    // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
+    ans = chkpal(fargc, fargv, 3);
+
+    check_ans(1, &ans, "Test 8_3");
+
+    // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
+    ans = chkpal(fargc, fargv, 4);
+
+    check_ans(1, &ans, "Test 8_4");
 }
 
 void
 test9(void)
 {
-    printf("Test 9 (--Function Name--)\n");
+    printf("Test 9 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "A man, a plan, a canal, Panama"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
+    ans = chkpal(fargc, fargv, 1);
 
-    check_ans(0, &ans, "Test 9");
+    check_ans(1, &ans, "Test 9");
 }
 
 void
 test10(void)
 {
-    printf("Test 10 (--Function Name--)\n");
+    printf("Test 10 (chkpal)\n");
 
     int ans = -2, fargc = 2;
     char *fargv[] = {"./ejecutable", "A man. a plan; a canal, Panama"};
 
     // 1 = Palíndromo ; 0 = No Palíndromo ; -1 = Error
-    //ans = funcion(fargc, fargv);
 
-    check_ans(0, &ans, "Test 10");
+    ans = chkpal(fargc, fargv, 1);
+
+    check_ans(1, &ans, "Test 10");
 }
 
 void
@@ -228,6 +260,7 @@ check_ans(int esperado, int *recibido, char* testname)
     }
     else
     {
+        printf("%%TEST_PASSED%% testname=%s\n", testname);
         test_pass++;
     }
 }
@@ -235,7 +268,8 @@ check_ans(int esperado, int *recibido, char* testname)
 int
 main(int argc, char** argv)
 {
-    printf("%%SUITE_STARTING%% fpalindromos_test\n");
+    printf("%%SUITE_STARTING%% int chkpal(int cant, char **string, "
+           "int position);\n");
     printf("%%SUITE_STARTED%%\n");
 
     printf("%%TEST_STARTED%% \n");

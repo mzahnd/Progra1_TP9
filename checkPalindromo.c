@@ -17,7 +17,7 @@
 
 /*
  * ============================================================================
- * File:    main.c
+ * File:    checkPalindromo.c
  * 
  * Author:  Martín E. Zahnd <mzahnd at itba.edu.ar>
  *          Joaquín Artola  <joartola at itba.edu.ar>
@@ -26,11 +26,10 @@
  *
  * Team:    Grupo 5
  * 
- * Created: October 17, 2019, 8:20 PM
+ * Created: October 18, 2019, 9:20 PM
  * 
  * General code description:
- *          Dado uno o varios strings ingresados como argumentos al ejecutar el
- *      programa, se verifica si cada uno de ellos es un palíndromo.
+ *          Verifica si un dado string es un palíndromo.
  * ============================================================================
  */
 
@@ -40,35 +39,80 @@
 
 #include "checkPalindromo.h"
 
+// ====== Constantes y Macros ======
+#define TOUPPER(c) (((c)>='a' && (c)<='z')?((c)+'A'-'a'):(c))
+
+// ====== Prototipos ======
+
+// Get string size
+static void
+getstr_size(char **string, char **strend, int position);
+
+// Compare characters in string
+static int
+compare_chars(char *strstart, char *strend);
 // ====== Funciones ======
 
-/*
- *
- */
 int
-main(int argc, char** argv)
+chkpal(int cant, char **string, int position)
 {
-    int answer = -1;
+    int ans = -1;
+    char *strend;
 
-    if(argc <= 1)
+
+    if(position < cant - 1)
     {
-        printf("Debe introducir un texto como argumento al ejecutar el "
-               "programa.\n");
+        strend = string[position + 1] - 2;
     }
 
     else
     {
-        int i;
-        for(i = 1; i < argc; i++)
-        {
-
-            answer = chkpal(argc, argv, i);
-        }
-#ifdef DEBUG
-        printf("i: %d ; answer: %d", i, answer);
-#endif
+        // Get string size manually
+        getstr_size(string, &strend, position);
     }
 
-    return (EXIT_SUCCESS);
+    // Compare characters in string
+    ans = compare_chars(&string[position][0], strend);
+
+    return ans;
 }
 
+// Get string size
+
+static void
+getstr_size(char **string, char **strend, int position)
+{
+    int i = 0;
+
+    while(string[position][i] != '\0')
+    {
+        *strend = string[position] + i++;
+    }
+}
+
+// Compare characters in string
+
+static int
+compare_chars(char *strstart, char *strend)
+{
+    int ans = -1;
+
+    if(strstart >= strend)
+
+    {
+        ans = 1;
+    }
+
+    else if(TOUPPER(*(strstart + 1)) == TOUPPER(*(strend - 1)))
+    {
+        ans = compare_chars(strstart + 1, strend - 1);
+    }
+
+    else
+    {
+        ans = 0;
+    }
+
+
+    return ans;
+}
